@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>HashTag : {{ hashtag.content }}</h1>
+
+  {% for article in articles %}
+    <p>작성자 : <b><a href="{% url 'accounts:profile' article.user.username %}">{{ article.user }}</a></b></p>
+    <p>제목 : {{ article.title }}</p>
+    <p>내용 : {{ article.content }}</p>
+
+    <a href="{% url 'articles:detail' article.pk %}">[DETAIL]</a>
+    <hr>
+{% endfor %}
+<a href="{% url 'articles:index'%}">[back]</a>
+{% endblock content %}
+
+
